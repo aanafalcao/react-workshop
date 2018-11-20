@@ -1,13 +1,17 @@
 import React from 'react';
- 
+import {Text, View, StyleSheet, Dimensions, PanResponder} from 'react-native';
+import  {Redirect}  from "react-router-native";
+import {gameStyles} from "./styleSheets.js"
+import Square from './Square.js'
+
 /*
 board:  0 => empty board
         1 => snake
         2 => Food
 
-win:    0 => Game 
+win:    0 => Game
         1 => WIN
-        -1 => LOSE 
+        -1 => LOSE
 */
 
 export default class Game extends React.Component {
@@ -59,7 +63,7 @@ export default class Game extends React.Component {
             onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
             onMoveShouldSetPanResponder: (evt, gestureState) => true,
             onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
-    
+
             onPanResponderGrant: (evt, gestureState) => {
             },
             onPanResponderMove: (evt, gestureState) => {
@@ -90,7 +94,7 @@ export default class Game extends React.Component {
 
         newSnakePosition.push((oldSnakePosition[0] + direction[0] + this.state.gridSize) % this.state.gridSize);
         newSnakePosition.push((oldSnakePosition[1] + direction[1] + this.state.gridSize) % this.state.gridSize);
-        
+
         let board = this.state.board.slice();
 
         if (board[newSnakePosition[0]][newSnakePosition[1]] == 1){
@@ -116,9 +120,9 @@ export default class Game extends React.Component {
         }));
     }
 
-   
+
     render() {
-        
+
         return (
             <View style={gameStyles.container} >
             </View>
@@ -126,32 +130,32 @@ export default class Game extends React.Component {
     }
 
     renderSquare(type, id) {
-        
+
     }
 
     renderRow(j) {
-        
+
     }
 
     renderBoard() {
-        
+
     }
 
     onSwipeUp() {
         if (this.state.direction[0] != 1)
             this.state.direction = [-1, 0];
     }
-    
+
     onSwipeDown() {
         if (this.state.direction[0] != -1)
             this.state.direction = [1, 0];
     }
-    
+
     onSwipeLeft() {
         if (this.state.direction[1] != 1)
             this.state.direction = [0, -1];
     }
-    
+
     onSwipeRight() {
         if (this.state.direction[1] != -1)
             this.state.direction = [0, 1];

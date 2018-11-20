@@ -1,6 +1,10 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import Square from './components/Square';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { NativeRouter, Route } from "react-router-native";
+import Game from './components/Game.js';
+import Menu from './components/Menu.js';
+import Lose from './components/Lose.js';
+import Win from './components/Win.js';
 
 
 export default class App extends React.Component {
@@ -24,7 +28,7 @@ const styles  = StyleSheet.create({
   text: {
       textAlign: 'center',
       textAlignVertical: 'center',
-      color: '#75a478', 
+      color: '#75a478',
       fontSize: 45
   }
 });
