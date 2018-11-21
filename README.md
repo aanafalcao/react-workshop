@@ -13,6 +13,8 @@ Para o workshop de React Native, pedimos que, antes do workshop:
 
 4 - Faças clone ou download deste repositório Git no teu computador!
 
+5 - Corras o seguinte comando na consola dentro da pasta do projeto - ```npm install```
+
 ### Alguma Ajuda na instalação!
 #### Node.js - JavaScript runtime built on Chrome's V8 JavaScript engine
 
