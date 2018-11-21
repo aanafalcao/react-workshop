@@ -10,9 +10,15 @@ import Win from './components/Win.js';
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Hello World!</Text>
-      </View>
+      <NativeRouter>
+        <View>
+          <Route exact path="/" component={Menu} />
+          <Route path="/game" component={Game} />
+          <Route path="/lose" component={Lose} />
+          <Route path="/win" component={Win} />
+          
+        </View>
+      </NativeRouter>
     );
   }
 }

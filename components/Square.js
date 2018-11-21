@@ -4,7 +4,7 @@ import {Text, View, StyleSheet} from 'react-native';
 export default class Square extends React.Component {
     constructor(props) {
         super(props);
-        let size = 20;
+        let size = this.props.size;
         this.squareStyles = StyleSheet.create({
             board: {
                 width: size,
@@ -23,9 +23,18 @@ export default class Square extends React.Component {
             }
         });
     }
+    
     render() {
         // console.log(this.squareStyles);
-        return(<View></View>);
+        let type = this.props.type;
+
+        if (type == 0) {
+            return (<View style={this.squareStyles.board}></View>)
+        }else if (type == 1) {
+            return (<View style={this.squareStyles.snake}></View>)
+        }else{
+            return (<View style={this.squareStyles.food}></View>)
+        }
     }
 
 }

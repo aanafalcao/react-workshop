@@ -125,20 +125,31 @@ export default class Game extends React.Component {
 
         return (
             <View style={gameStyles.container} >
+                <Text style={gameStyles.score}>Score: {this.state.score}</Text>
+                {this.renderBoard()}
             </View>
         );
     }
 
     renderSquare(type, id) {
-
+        let size = Math.round(this.state.width / this.state.gridSize);
+        return(<View key={id}><Square size={size} type={type}></Square></View>);
     }
 
     renderRow(j) {
-
+        let squares = [];
+        for (let i = 0; i < this.state.gridSize; i++){
+            squares.push(<View key={i}>{this.renderSquare(this.state.board[i][j], i)}</View>)
+        }
+        return(<View>{squares}</View>)
     }
 
     renderBoard() {
-
+        let rows = [];
+        for (let i = 0; i < this.state.gridSize; i++){
+            rows.push(<View key={i}>{this.renderRow(i)}</View>)
+        }
+        return(<View style={gameStyles.grid}>{rows}</View>);
     }
 
     onSwipeUp() {
