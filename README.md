@@ -35,3 +35,7 @@ Instalar o Expo no telemóvel:
 
 ## Usage
 Para executar o projeto, basta executar o seginte comando: ```npm start```
+
+## Deploy to your phone
+You can find information about how to deploy information to your phone here (look at step 3 and 5): 
+https://docs.expo.io/versions/latest/guides/building-standalone-apps.html

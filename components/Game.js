@@ -70,6 +70,20 @@ export default class Game extends React.Component {
             },
             onPanResponderTerminationRequest: (evt, gestureState) => true,
             onPanResponderRelease: (evt, gestureState) => {
+                if (Math.abs(gestureState.dx) > Math.abs(gestureState.dy)){
+                    console.log("Movimento sexy! Horizontal")
+                  if (gestureState.dx > 0){
+                      this.onSwipeRight();
+                  }else{
+                      this.onSwipeLeft();
+                  }
+                }else{
+                  if (gestureState.dy > 0){
+                      this.onSwipeDown();
+                  }else{
+                      this.onSwipeUp();
+                  }
+                }  
             },
             onPanResponderTerminate: (evt, gestureState) => {
             },
@@ -80,9 +94,12 @@ export default class Game extends React.Component {
     }
 
     componentDidMount() {
+        let intervalId = setInterval(() => this.update(), this.state.speed);
+        this.setState({intervalId: intervalId});  
     }
 
     componentWillUnmount() {
+        clearInterval(this.state.intervalId);
     }
 
     update() {
@@ -122,9 +139,16 @@ export default class Game extends React.Component {
 
 
     render() {
+        if (this.state.win == 1){
+            return (<View><Redirect to="/win"/></View>);
+        }else if (this.state.win == -1) {
+            return (<View><Redirect to="/lose"/></View>);
+        }
+
+
 
         return (
-            <View style={gameStyles.container} >
+            <View {...this._panResponder.panHandlers}>
                 <Text style={gameStyles.score}>Score: {this.state.score}</Text>
                 {this.renderBoard()}
             </View>
